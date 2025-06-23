@@ -1,7 +1,8 @@
 const pool = require('../db');
 
 exports.createExpense = async (req, res) => {
-  const { user_id, amount, category, note, date } = req.body;
+  const user_id = req.user.user_id;
+  const { amount, category, note, date } = req.body;
   try {
     const result = await pool.query(
       `INSERT INTO expenses (user_id, amount, category, note, date)
@@ -26,7 +27,7 @@ exports.getAllExpenses = async (req, res) => {
 };
 
 exports.getExpensesByUser = async (req, res) => {
-  const { user_id } = req.params;
+  const  user_id  = req.user.user_id;
   try {
     const result = await pool.query(
       `SELECT * FROM expenses WHERE user_id = $1 ORDER BY date DESC`,
