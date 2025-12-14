@@ -11,6 +11,13 @@ app.use(cors({
   credentials: true
 }))
 app.use(express.json());
+app.get('/', (req, res) => {
+  res.json({
+    status: 'ok',
+    service: 'Family Budget Backend',
+    version: '1.0.0'
+  });
+});
 app.use('/api/expenses', expensesRoutes);
 app.use('/api/incomes', incomesRoutes);
 app.use(authRoutes);
