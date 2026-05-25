@@ -3,11 +3,22 @@ const pool = require('../db');
 exports.createIncome = async (req, res) => {
   const user_id = req.user.user_id;
   const { amount, category, note, date } = req.body;
+
+  if (!amount || isNaN(amount) || Number(amount) <= 0) {
+    return res.status(400).json({ error: 'amount must be a positive number' });
+  }
+  if (!category || typeof category !== 'string' || category.trim() === '') {
+    return res.status(400).json({ error: 'category is required' });
+  }
+  if (!date || isNaN(Date.parse(date))) {
+    return res.status(400).json({ error: 'date is required and must be a valid date' });
+  }
+
   try {
     const result = await pool.query(
       `INSERT INTO incomes (user_id, amount, category, note, date)
        VALUES ($1, $2, $3, $4, $5) RETURNING *`,
-      [user_id, amount, category, note, date]
+      [user_id, Number(amount), category.trim(), note || null, date]
     );
     res.status(201).json(result.rows[0]);
   } catch (error) {
@@ -34,12 +45,23 @@ exports.updateIncome = async (req, res) => {
   const { id } = req.params;
   const user_id = req.user.user_id;
   const { amount, category, note, date } = req.body;
+
+  if (!amount || isNaN(amount) || Number(amount) <= 0) {
+    return res.status(400).json({ error: 'amount must be a positive number' });
+  }
+  if (!category || typeof category !== 'string' || category.trim() === '') {
+    return res.status(400).json({ error: 'category is required' });
+  }
+  if (!date || isNaN(Date.parse(date))) {
+    return res.status(400).json({ error: 'date is required and must be a valid date' });
+  }
+
   try {
     const result = await pool.query(
       `UPDATE incomes
        SET amount = $1, category = $2, note = $3, date = $4
        WHERE id = $5 AND user_id = $6 RETURNING *`,
-      [amount, category, note, date, id, user_id]
+      [Number(amount), category.trim(), note || null, date, id, user_id]
     );
     if (result.rowCount === 0) {
       return res.status(404).json({ error: 'Income not found' });

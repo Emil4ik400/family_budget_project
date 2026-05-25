@@ -11,8 +11,21 @@ if (!SECRET) {
     throw new Error('JWT_SECRET is not defined in .env file');
 }
 
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 router.post('/register', async (req, res) => {
     const { name, email, password } = req.body;
+
+    if (!name || typeof name !== 'string' || name.trim() === '') {
+      return res.status(400).json({ error: 'name is required' });
+    }
+    if (!email || !EMAIL_REGEX.test(email)) {
+      return res.status(400).json({ error: 'valid email is required' });
+    }
+    if (!password || password.length < 6) {
+      return res.status(400).json({ error: 'password must be at least 6 characters' });
+    }
+
     try {
       const existingUser = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
       if (existingUser.rows.length > 0) {
@@ -34,6 +47,14 @@ router.post('/register', async (req, res) => {
 
   router.post('/login', async(req,res) => {
     const {email, password} = req.body;
+
+    if (!email || !EMAIL_REGEX.test(email)) {
+      return res.status(400).json({ error: 'valid email is required' });
+    }
+    if (!password || password.length < 1) {
+      return res.status(400).json({ error: 'password is required' });
+    }
+
     try{
         const userResult = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
         const user = userResult.rows[0];
