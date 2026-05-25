@@ -18,7 +18,7 @@ function Register(){
     try {
         const res = await fetch('http://localhost:3000/register', {
           method: 'POST',
-          header: {'Content-Type': 'application/json'},
+          headers: {'Content-Type': 'application/json'},
           body: JSON.stringify(form)
         });
         if(!res.ok) throw new Error('Registration failed');
@@ -35,7 +35,7 @@ function Register(){
             <h2>Register</h2>
             <form onSubmit ={handleSubmit}>
                 <input name = "name" placeholder = "Name" onChange={handleChange}required/>
-                <input email = "name" type = "email" placeholder = "Email" onChange={handleChange}required/>
+                <input name="email" type="email" placeholder="Email" onChange={handleChange} required />
                 <input name="password" type="password" placeholder="Password" onChange={handleChange} required />
                <button type = "submit">Register</button>
             </form>

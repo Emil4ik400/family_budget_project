@@ -5,9 +5,9 @@ const pool = require('../db');
 const router = express.Router();
 
 require('dotenv').config();
-const SECRET = process.env.JWT_SECRET || 'your_jwt_secret';
+const SECRET = process.env.JWT_SECRET;
 
-if(!SECRET){
+if (!SECRET) {
     throw new Error('JWT_SECRET is not defined in .env file');
 }
 
