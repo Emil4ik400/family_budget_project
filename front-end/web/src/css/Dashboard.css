@@ -1,0 +1,251 @@
+.dashboard {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  text-align: left;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.dashboard-header h1 {
+  font-size: 1.8em;
+  margin: 0;
+}
+
+.btn-logout {
+  background: transparent;
+  border: 1px solid #666;
+  color: inherit;
+  padding: 0.4em 1em;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-logout:hover {
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+/* Balance */
+.balance-card {
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.balance-card.positive {
+  background: rgba(34, 197, 94, 0.15);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.balance-card.negative {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.balance-label {
+  font-size: 0.9em;
+  opacity: 0.7;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.balance-amount {
+  font-size: 2.5em;
+  font-weight: 700;
+}
+
+.balance-details {
+  display: flex;
+  gap: 2rem;
+  font-size: 0.95em;
+}
+
+.income-total { color: #22c55e; }
+.expense-total { color: #ef4444; }
+
+/* Form */
+.add-form {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.form-type-toggle {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.form-type-toggle button {
+  flex: 1;
+  padding: 0.5em;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: inherit;
+  opacity: 0.5;
+  border-radius: 6px;
+}
+
+.form-type-toggle button.active {
+  opacity: 1;
+  border-color: #646cff;
+  background: rgba(100, 108, 255, 0.15);
+}
+
+.form-fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.form-fields input {
+  flex: 1;
+  min-width: 150px;
+  padding: 0.5em 0.8em;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  color: inherit;
+  font-size: 0.95em;
+}
+
+.form-fields input:focus {
+  outline: none;
+  border-color: #646cff;
+}
+
+.btn-add {
+  padding: 0.5em 1.5em;
+  background: #646cff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-add:hover {
+  background: #535bf2;
+}
+
+.form-error {
+  color: #ef4444;
+  margin-top: 0.75rem;
+  font-size: 0.9em;
+}
+
+/* Lists */
+.lists-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 600px) {
+  .lists-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.list-section h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.2em;
+}
+
+.list-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.record-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border-left: 3px solid transparent;
+}
+
+.income-item {
+  background: rgba(34, 197, 94, 0.08);
+  border-left-color: #22c55e;
+}
+
+.expense-item {
+  background: rgba(239, 68, 68, 0.08);
+  border-left-color: #ef4444;
+}
+
+.record-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.record-category {
+  font-weight: 600;
+  font-size: 0.95em;
+}
+
+.record-date {
+  font-size: 0.8em;
+  opacity: 0.6;
+}
+
+.record-note {
+  font-size: 0.8em;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+.record-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.record-amount {
+  font-weight: 700;
+  font-size: 1em;
+}
+
+.income-amount { color: #22c55e; }
+.expense-amount { color: #ef4444; }
+
+.btn-delete {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  font-size: 0.85em;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  line-height: 1;
+}
+
+.btn-delete:hover {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+.empty {
+  opacity: 0.5;
+  font-size: 0.9em;
+}
