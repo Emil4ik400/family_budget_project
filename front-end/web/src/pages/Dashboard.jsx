@@ -94,10 +94,10 @@ function Dashboard() {
 
       <div className={`balance-card ${balance >= 0 ? 'positive' : 'negative'}`}>
         <span className="balance-label">Баланс</span>
-        <span className="balance-amount">{balance.toFixed(2)} ₽</span>
+        <span className="balance-amount">{balance.toFixed(2)} ₪</span>
         <div className="balance-details">
-          <span className="income-total">+ {totalIncome.toFixed(2)} ₽</span>
-          <span className="expense-total">− {totalExpense.toFixed(2)} ₽</span>
+          <span className="income-total">+ {totalIncome.toFixed(2)} ₪</span>
+          <span className="expense-total">− {totalExpense.toFixed(2)} ₪</span>
         </div>
       </div>
 
@@ -139,7 +139,7 @@ function Dashboard() {
                     {item.note && <span className="record-note">{item.note}</span>}
                   </div>
                   <div className="record-right">
-                    <span className="record-amount income-amount">+{Number(item.amount).toFixed(2)} ₽</span>
+                    <span className="record-amount income-amount">+{Number(item.amount).toFixed(2)} ₪</span>
                     <button className="btn-delete" onClick={() => handleDelete('income', item.id)}>✕</button>
                   </div>
                 </li>
@@ -162,7 +162,7 @@ function Dashboard() {
                     {item.note && <span className="record-note">{item.note}</span>}
                   </div>
                   <div className="record-right">
-                    <span className="record-amount expense-amount">−{Number(item.amount).toFixed(2)} ₽</span>
+                    <span className="record-amount expense-amount">−{Number(item.amount).toFixed(2)} ₪</span>
                     <button className="btn-delete" onClick={() => handleDelete('expense', item.id)}>✕</button>
                   </div>
                 </li>
