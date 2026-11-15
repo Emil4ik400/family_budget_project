@@ -1,0 +1,9 @@
+{
+  "root": ".",
+  "include": [
+    "routes/**/*.js",
+    "controllers/**/*.js",
+    "middleware/**/*.js"
+  ],
+  "backend": "http://localhost:3000"
+}
